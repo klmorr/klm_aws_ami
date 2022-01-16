@@ -12,7 +12,7 @@ phases:
   build:
     commands:
       - echo "Executing packer build"
-      - ./packer build -color=false kali_linux.pkr.hcl | tee packer.log
+      - ./packer build -color=false kali.json | tee packer.log
   post_build:
     commands:
       - test -f manifest.json || exit 1

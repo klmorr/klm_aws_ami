@@ -84,6 +84,11 @@ Resources:
                   - s3:ListBucket
                   - s3:PutObject
                 Resource: "*"
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:CreateLogGroup
+                Resource: "*"
 
   CodeBuildProject:
     Type: AWS::CodeBuild::Project

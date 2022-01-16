@@ -2,10 +2,6 @@
     "builders": [
         {
             "region": "{{user `region`}}",
-            "assume_role": {
-                "role_arn": "{{user `role_arn`}}",
-                "session_name": "codebuild"
-            },
             "ami_name": "r3d-kali-{{timestamp}}",
             "instance_type": "{{user `instance_type`}}",
             "source_ami_filter": {

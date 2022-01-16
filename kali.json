@@ -1,0 +1,36 @@
+{
+    "builders": [
+        {
+            "region": "{{user `region`}}",
+            "profile": "{{user `aws_profile`}}",
+            "ami_name": "r3d-kali-{{timestamp}}",
+            "instance_type": "{{user `instance_type`}}",
+            "source_ami": "{{user `source_ami`}}",
+            "ssh_username": "kali",
+            "type": "amazon-ebs",
+            "tags": {
+                "Name": "{{user `name`}}",
+                "description": "{{user `description`}}",
+                "builder": "{{user `builder`}}"
+            }
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "environment_vars": "DEBIAN_FRONTEND=noninteractive",
+            "execute_command": "sudo -S env {{ .Vars }} {{ .Path }}",
+            "inline": [
+                "apt update && upgrade && apt dist-upgrade -y",
+                "apt-get install python3 software-properties-common jq curl unzip ansible -y"
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "manifest",
+            "output": "manifest.json",
+            "strip_path": true
+        }
+    ]
+}

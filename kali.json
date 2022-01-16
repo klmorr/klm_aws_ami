@@ -7,7 +7,7 @@
             "source_ami": "{{user `source_ami`}}",
             "source_ami_filter": {
                 "most_recent": true,
-                "owners": "amazon"
+                "owners": "{{user `ami_owners`}}"
             },
             "ssh_username": "kali",
             "type": "amazon-ebs",

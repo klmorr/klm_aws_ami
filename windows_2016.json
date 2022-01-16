@@ -3,10 +3,6 @@
         {
             "ami_name": "wn2016-{{timestamp}}",
             "region": "{{user `region`}}",
-            "assume_role": {
-                "role_arn": "{{user `role_arn`}}",
-                "session_name": "codebuild"
-            },
             "instance_type": "t3.small",
             "type": "amazon-ebs",
             "source_ami_filter": {
@@ -49,7 +45,7 @@
     "post-processors": [
         {
             "type": "manifest",
-            "output": "manifest.json",
+            "output": "wn16_manifest.json",
             "strip_path": true
         }
     ]

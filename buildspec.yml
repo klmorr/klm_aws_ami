@@ -15,10 +15,4 @@ phases:
     commands:
       - test -f kali_manifest.json || exit 1
       - cat kali_manifest.json
-      - AMI_ID=$(cut -d':' -f2 <<<"$(jq -r '.builds[0].artifact_id' < kali_manifest.json)")
-      - test "$AMI_ID" != "" && test "$AMI_ID" != "null" || exit 1
-      - >-
-        aws ssm put-parameter --cli-input-json
-        '{"Type": "String", "Name": "/ami/windows_2016/id", "Value": "'"$AMI_ID"'", "Overwrite": true}'
-      - echo "AMI ID $AMI_ID"
       - echo "Build completed on $(date)"

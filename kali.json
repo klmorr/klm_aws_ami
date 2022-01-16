@@ -8,7 +8,14 @@
             },
             "ami_name": "r3d-kali-{{timestamp}}",
             "instance_type": "{{user `instance_type`}}",
-            "source_ami": "{{user `source_ami`}}",
+            "source_ami_filter": {
+                "filters": {
+                    "image-id": "{{user `source_ami`}}",
+                    "virtualization-type": "hvm"
+                },
+                "most_recent": true,
+                "owners": "amazon"
+            },
             "ssh_username": "kali",
             "type": "amazon-ebs",
             "tags": {

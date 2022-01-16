@@ -7,12 +7,12 @@ phases:
       - echo "Executing packer template validation"
       - echo "Validating packer template"
       #- ./packer validate -var-file="/vars/kali_vars.json" kali.json
-      - ./packer validate -var-file="/vars/windows_2016_vars.json" windows_2016.json
+      - ./packer validate -var-file="windows_2016_vars.json" windows_2016.json
   build:
     commands:
       - echo "Executing packer build"
       #- ./packer build -color=false -var-file="/vars/kali_vars.json" kali.json | tee packer.log
-      - ./packer build -color=false -var-file="/vars/windows_2016_vars.json" windows_2016.json | tee packer.log
+      - ./packer build -color=false -var-file="windows_2016_vars.json" windows_2016.json | tee packer.log
   post_build:
     commands:
       - test -f manifest.json || exit 1

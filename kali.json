@@ -6,9 +6,6 @@
             "instance_type": "{{user `instance_type`}}",
             "source_ami": "{{user `source_ami`}}",
             "source_ami_filter": {
-                "filters": {
-                    "virtualization-type": "hvm"
-                },
                 "most_recent": true,
                 "owners": "amazon"
             },

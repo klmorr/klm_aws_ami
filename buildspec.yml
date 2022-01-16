@@ -7,9 +7,8 @@ phases:
       - curl -qL -o jq https://stedolan.github.io/jq/download/linux64/jq && chmod +x ./jq
       - echo "Executing packer template validation"
       - ./packer validate -var-file="/vars/kali_vars.json" kali.json
-  validate:
-    - echo "Validating packer template"
-    - packer validate
+      - echo "Validating packer template"
+      - packer validate
   build:
     commands:
       - echo "Configuring AWS credentials"

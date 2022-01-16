@@ -1,0 +1,56 @@
+{
+    "builders": [
+        {
+            "ami_name": "wn2016-{{timestamp}}",
+            "region": "{{user `region`}}",
+            "assume_role": {
+                "role_arn": "{{user `role_arn`}}",
+                "session_name": "codebuild"
+            },
+            "instance_type": "t3.small",
+            "type": "amazon-ebs",
+            "source_ami_filter": {
+                "filters": {
+                    "virtualization-type": "hvm",
+                    "name": "{{user `ami_filter_name`}}"
+                },
+                "most_recent": true,
+                "owners": "amazon"
+            },
+            "user_data_file": "./scripts/Set-UserData.ps1",
+            "communicator": "winrm",
+            "winrm_username": "Administrator",
+            "winrm_port": 5986,
+            "winrm_timeout": "30m",
+            "winrm_use_ssl": true,
+            "winrm_insecure": true,
+            "tags": {
+                "Name": "wn2016-{{timestamp}}",
+                "description": "{{user `description`}}",
+                "builder": "{{user `builder`}}"
+            }
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "file",
+            "source": "./scripts/",
+            "destination": "C:\\Windows\\Temp"
+        },
+        {
+            "type": "powershell",
+            "inline": [
+                "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SendWindowsIsReady.ps1 -Schedule",
+                "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\InitializeInstance.ps1 -Schedule",
+                "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SysprepInstance.ps1 -NoShutdown"
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "manifest",
+            "output": "manifest.json",
+            "strip_path": true
+        }
+    ]
+}

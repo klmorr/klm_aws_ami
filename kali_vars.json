@@ -1,5 +1,4 @@
 {
-    "role_arn": "arn:aws:iam::027606073659:role/service-role/CodeBuild-packer-ami",
     "region": "us-east-1",
     "instance_type": "t2.micro",
     "source_ami": "ami-06fd113e1286dd166",

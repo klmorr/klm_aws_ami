@@ -7,17 +7,12 @@ phases:
       - echo "Executing packer template validation"
       - echo "Validating packer template"
       - ./packer validate -var-file="kali_vars.json" kali.json
-      #- ./packer validate -var-file="windows_2016_vars.json" windows_2016.json
   build:
     commands:
       - echo "Executing packer build"
       - ./packer build -color=false -var-file="kali_vars.json" kali.json | tee packer.log
-      #- ./packer build -color=false -var-file="windows_2016_vars.json" windows_2016.json | tee packer.log
   post_build:
     commands:
-      #- test -f win16_manifest.json || exit 1
-      #- cat win16_manifest.json
-      #- AMI_ID=$(cut -d':' -f2 <<<"$(jq -r '.builds[0].artifact_id' < win16_manifest.json)")
       - test -f kali_manifest.json || exit 1
       - cat kali_manifest.json
       - AMI_ID=$(cut -d':' -f2 <<<"$(jq -r '.builds[0].artifact_id' < kali_manifest.json)")

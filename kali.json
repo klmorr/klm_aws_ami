@@ -6,7 +6,7 @@
             "instance_type": "{{user `instance_type`}}",
             "source_ami_filter": {
                 "filters": {
-                    "name": "Kali Linux*",
+                    "image-id": "ami-0e58e6da772372235",
                     "virtualization-type": "hvm"
                 },
                 "most_recent": true,

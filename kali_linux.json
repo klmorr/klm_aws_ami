@@ -2,7 +2,7 @@
     "builders": [
         {
             "region": "{{user `region`}}",
-            "ami_name": "r3d-kali-{{timestamp}}",
+            "ami_name": "r3d-kali-{{isotime \"02Jan2006\"}}",
             "instance_type": "{{user `instance_type`}}",
             "source_ami": "{{user `source_ami`}}",
             "source_ami_filter": {

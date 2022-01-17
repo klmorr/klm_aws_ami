@@ -1,0 +1,8 @@
+{
+    "region": "us-west-1",
+    "ami_filter_name": "amzn-ami*-ebs",
+    "instance_type": "t2.micro",
+    "ami_owner": "amazon",
+    "description": "amazon linux 2 latest",
+    "builder": "packer"
+}

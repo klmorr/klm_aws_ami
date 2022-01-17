@@ -8,5 +8,5 @@ Codebuild project for creating ami images using packer
 
 | Name | Description |
 |------|-------------|
-| [packer-codebuild](/terraform/packer-codebuild/main.tf) | Terraform template for creatine the codebuild project |
-| [amazon_linux2](amazon_linux2.json) | Packer template to create an amazon linux 2 ami |
+| [codebuild-ami-packer](/terraform/codebuild-ami-packer/readme.md) | Terraform template for creatine the codebuild project |
+| [codebuild-token-github](/terraform/codebuild-token-github/readme.md) | Packer template to create an amazon linux 2 ami |

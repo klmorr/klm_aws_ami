@@ -29,11 +29,6 @@
     ],
     "provisioners": [
         {
-            "type": "file",
-            "source": "./scripts/",
-            "destination": "C:\\Windows\\Temp"
-        },
-        {
             "type": "powershell",
             "inline": [
                 "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SendWindowsIsReady.ps1 -Schedule",

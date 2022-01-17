@@ -1,4 +1,10 @@
 version: 0.2
+env:
+  variables:
+    OS: "kali_linux"
+  exported-variables:
+    - OS
+    - CODEBUILD_BUILD_ID
 phases:
   pre_build:
     commands:
@@ -6,11 +12,11 @@ phases:
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/1.7.8/packer_1.7.8_linux_amd64.zip && unzip packer.zip
       - echo "Executing packer template validation"
       - echo "Validating packer template"
-      - ./packer validate -var-file="kali_vars.json" kali.json
+      - ./packer validate -var-file="$OS_vars.json" $OS.json
   build:
     commands:
       - echo "Executing packer build"
-      - ./packer build -color=false -var-file="kali_vars.json" kali.json | tee packer.log
+      - ./packer build -color=false -var-file="$OS_vars.json" $OS.json | tee packer.log
   post_build:
     commands:
       - test -f kali_manifest.json || exit 1

@@ -3,7 +3,7 @@
     "instance_type": "t2.micro",
     "source_ami": "ami-06fd113e1286dd166",
     "ami_owner": "aws-marketplace",
-    "name": "kmo-kali",
+    "name": "kali-latest",
     "description": "kali attack ami",
     "builder": "packer"
 }

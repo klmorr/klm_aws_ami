@@ -1,0 +1,7 @@
+aws_profile     = ""
+aws_region      = ""
+github_branch   = "main"
+github_location = ""
+project_name    = ""
+s3_bucket_acl   = "private"
+tags            = ""

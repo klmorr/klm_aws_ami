@@ -1,3 +1,8 @@
+variable "prefix" {
+  type        = string
+  description = "prefix for all resource names"
+}
+
 variable "aws_profile" {
   type        = string
   description = "Local aws credential profile"

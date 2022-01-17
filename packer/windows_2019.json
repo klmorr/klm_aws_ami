@@ -1,0 +1,48 @@
+{
+    "builders": [
+        {
+            "ami_name": "wn2016-{{isotime \"02Jan2006\"}}",
+            "region": "{{user `region`}}",
+            "instance_type": "t3.small",
+            "force_deregister": true,
+            "type": "amazon-ebs",
+            "source_ami_filter": {
+                "filters": {
+                    "virtualization-type": "hvm",
+                    "name": "{{user `ami_filter_name`}}"
+                },
+                "most_recent": true,
+                "owners": "amazon"
+            },
+            "user_data_file": "./scripts/Set-UserData.ps1",
+            "communicator": "winrm",
+            "winrm_username": "Administrator",
+            "winrm_port": 5986,
+            "winrm_timeout": "30m",
+            "winrm_use_ssl": true,
+            "winrm_insecure": true,
+            "tags": {
+                "Name": "wn2016-{{timestamp}}",
+                "description": "{{user `description`}}",
+                "builder": "{{user `builder`}}"
+            }
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "powershell",
+            "inline": [
+                "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SendWindowsIsReady.ps1 -Schedule",
+                "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\InitializeInstance.ps1 -Schedule",
+                "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SysprepInstance.ps1 -NoShutdown"
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "manifest",
+            "output": "windows_2019_manifest.json",
+            "strip_path": true
+        }
+    ]
+}

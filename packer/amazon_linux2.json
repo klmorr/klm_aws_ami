@@ -1,0 +1,45 @@
+{
+    "variables": {
+        "aws_region": "{{env `AWS_REGION`}}",
+        "aws_ami_name": "amazon-linux_{{isotime \"02Jan2006\"}}"
+    },
+    "builders": [
+        {
+            "region": "{{user `aws_region`}}",
+            "ami_name": "amazon2-{{isotime \"02Jan2006\"}}",
+            "type": "amazon-ebs",
+            "instance_type": "t2.micro",
+            "ssh_username": "ec2-user",
+            "ami_description": "{{user `description`}}",
+            "source_ami_filter": {
+                "filters": {
+                    "virtualization-type": "hvm",
+                    "name": "{{user `ami_filter_name`}}",
+                    "root-device-type": "ebs"
+                },
+                "owners": "{{user `ami_owners`}}",
+                "most_recent": true
+            }
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sudo yum update -y",
+                "sudo /usr/sbin/update-motd --disable",
+                "echo 'No unauthorized access permitted' | sudo tee /etc/motd",
+                "sudo rm /etc/issue",
+                "sudo ln -s /etc/motd /etc/issue",
+                "sudo yum install -y elinks screen"
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "manifest",
+            "output": "amazon_linux2_manifest.json",
+            "strip_path": true
+        }
+    ]
+}

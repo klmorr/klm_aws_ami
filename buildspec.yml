@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    OS: "kali_linux"
+    OS: "windows_2016"
   exported-variables:
     - OS
     - CODEBUILD_BUILD_ID

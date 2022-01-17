@@ -2,7 +2,7 @@
     "region": "us-west-1",
     "ami_filter_name": "*Windows_Server-2019-English-Full-Base-*",
     "ami_instance_type": "t3.medium",
-    "ami_iam_instance_profile": "kmo-mgmt-mgmt",
+    "ami_iam_instance_profile": "ec2_ssm_role",
     "ami_name": "win19-latest",
     "ami_owners": "amazon",
     "description": "windows 2019 latest build",

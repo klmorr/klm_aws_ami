@@ -1,7 +1,7 @@
 {
     "region": "us-west-1",
     "instance_type": "t2.micro",
-    "source_ami": "ami-06fd113e1286dd166",
+    "source_ami": "ami-0e58e6da772372235",
     "ami_owner": "aws-marketplace",
     "name": "kali-latest",
     "description": "kali attack ami",

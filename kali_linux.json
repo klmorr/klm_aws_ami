@@ -10,6 +10,7 @@
                 "owners": "{{user `ami_owners`}}"
             },
             "ssh_username": "kali",
+            "ssh_read_write_timeout": "10m",
             "type": "amazon-ebs",
             "tags": {
                 "Name": "{{user `name`}}",

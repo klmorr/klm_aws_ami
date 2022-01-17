@@ -5,6 +5,7 @@
             "region": "{{user `region`}}",
             "instance_type": "t3.small",
             "type": "amazon-ebs",
+            "force_deregister": true,
             "source_ami_filter": {
                 "filters": {
                     "virtualization-type": "hvm",

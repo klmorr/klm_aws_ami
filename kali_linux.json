@@ -5,6 +5,7 @@
             "ami_name": "kali-{{isotime \"02Jan2006\"}}",
             "instance_type": "{{user `instance_type`}}",
             "source_ami": "{{user `source_ami`}}",
+            "force_deregister": true,
             "source_ami_filter": {
                 "most_recent": true,
                 "owners": "{{user `ami_owners`}}"

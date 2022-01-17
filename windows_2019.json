@@ -4,6 +4,7 @@
             "ami_name": "wn2016-{{isotime \"02Jan2006\"}}",
             "region": "{{user `region`}}",
             "instance_type": "t3.small",
+            "force_deregister": true,
             "type": "amazon-ebs",
             "source_ami_filter": {
                 "filters": {

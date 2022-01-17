@@ -11,8 +11,6 @@
             },
             "ssh_username": "kali",
             "type": "amazon-ebs",
-            "aws_max_attempts":"50",
-            "aws_poll_delay_seconds": "5",
             "tags": {
                 "Name": "{{user `name`}}",
                 "description": "{{user `description`}}",

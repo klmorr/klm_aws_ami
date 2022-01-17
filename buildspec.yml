@@ -12,11 +12,11 @@ phases:
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/1.7.8/packer_1.7.8_linux_amd64.zip && unzip packer.zip
       - echo "Executing packer template validation"
       - echo "Validating packer template"
-      - ./packer validate -var-file="./vars/${OS}_vars.json" ${OS}.json
+      - ./packer validate -var-file="./vars/${OS}_vars.json" ./packer_templates/${OS}.json
   build:
     commands:
       - echo "Executing packer build"
-      - ./packer build -color=false -var-file="./vars/${OS}_vars.json" ${OS}.json | tee packer.log
+      - ./packer build -color=false -var-file="./vars/${OS}_vars.json" ./packer_templates/${OS}.json | tee packer.log
   post_build:
     commands:
       - test -f kali_manifest.json || exit 1

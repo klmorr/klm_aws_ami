@@ -34,5 +34,12 @@
                 "sudo yum install -y elinks screen"
             ]
         }
+    ],
+    "post-processors": [
+        {
+            "type": "manifest",
+            "output": "amazon_linux2_manifest.json",
+            "strip_path": true
+        }
     ]
 }

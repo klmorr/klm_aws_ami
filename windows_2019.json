@@ -45,7 +45,7 @@
     "post-processors": [
         {
             "type": "manifest",
-            "output": "wn16_manifest.json",
+            "output": "windows_2019_manifest.json",
             "strip_path": true
         }
     ]

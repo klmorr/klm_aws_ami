@@ -34,7 +34,7 @@ git clone https://github.com/klmorr/klm_aws_ami.git
 
 #### Adding personal access token to AWS
 
-Skip to [#Create CodeBuild Project] if Github credentials have already been added to AWS
+[Skip to Create CodeBuild Project](#create-codebuild-project) if Github credentials have already been added to AWS
 
 1. Navigate to codebuild-token-github
 

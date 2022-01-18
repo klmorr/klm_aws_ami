@@ -9,7 +9,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~>3.70.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.70.0 |
 
 ## Modules
 
@@ -26,7 +26,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_profile"></a> [aws\_profile](#input\_aws\_profile) | Local aws credential profile | `string` | n/a | yes |
-| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS account region to create the SSM parameter in | `string` | n/a | yes |
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS account region to add the token to | `string` | n/a | yes |
 | <a name="input_github_token"></a> [github\_token](#input\_github\_token) | Github personal access token | `string` | n/a | yes |
 
 ## Outputs

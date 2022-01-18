@@ -6,7 +6,7 @@ variable "aws_profile" {
 
 variable "aws_region" {
   type        = string
-  description = "AWS account region to create the SSM parameter in"
+  description = "AWS account region to add the token to"
 
   validation {
     condition = (contains([

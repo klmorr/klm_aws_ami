@@ -18,7 +18,7 @@ Codebuild project for creating ami images using packer
 | [amazon_linux2](pkr/amazon_linux2.json) | Packer template to create an Amazon Linux 2 ami |
 | [kali_linux](pkr/kali_linux.json) | Packer template to create a Kali Linux ami, must subscribe to ami in AWS Marketplace |
 | [windows_2016](pkr/vars/windows_2016_vars.json) | Packer template to create a Windows 2016 base ami |
-| [windows_2019] | Packer template to create a Windows 2019 base ami |
+| [windows_2019](pkr/windows_2019.json) | Packer template to create a Windows 2019 base ami |
 
 #### Getting started
 

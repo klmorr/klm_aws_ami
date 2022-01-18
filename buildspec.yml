@@ -21,4 +21,6 @@ phases:
     commands:
       - test -f ${OS}_manifest.json || exit 1
       - cat ${OS}_manifest.json
-      - echo "Build completed on $(date)"
+      - AMI_ID = $(jq -r '.builds[0].artifact_id | split (":")[1]' ./${OS}_manifest.json)
+      - aws ssm put-parameter --name "/ami/${OS}/id" --value $AMI_ID --type String --overwrite
+      - echo "Build completed on $(date)"v

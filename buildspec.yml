@@ -11,6 +11,8 @@ phases:
       - echo "Downloading and installing packer"
       - ls
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/1.7.8/packer_1.7.8_linux_amd64.zip && unzip packer.zip
+      - echo "Installing jq"
+      - curl -qL -o jq https://stedolan.github.io/jq/download/linux64/jq && chmod +x ./jq
       - echo "Executing packer template validation"
       - ./packer validate -var-file="./pkr/vars/${OS}_vars.json" ./pkr/${OS}.json
   build:
@@ -21,7 +23,9 @@ phases:
     commands:
       - ls
       #- test -f "${OS}_manifest.json" || exit 1
-      - cat "${OS}_manifest.json"
+      - AMI_ID=$(cat "${OS}_manifest.json" | jq -r .builds[0].artifact_id |  cut -d':' -f2)
+      - echo "${AMI_ID}"
+      #- cat "${OS}_manifest.json"
       #- AMI_ID = cat "${OS}_manifest.json" | jq '.builds[0].artifact_id' | tr -d '"' | awk 'match($0, /ami-.*/) { print substr($0, RSTART, RLENGTH) }'
       #- aws ssm put-parameter --name "/ami/${OS}/id" --value $AMI_ID --type String --overwrite
       - echo "Build completed on $(date)"v

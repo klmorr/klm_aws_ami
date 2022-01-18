@@ -19,8 +19,9 @@ phases:
       - ./packer build -color=false -var-file="./pkr/vars/${OS}_vars.json" ./pkr/${OS}.json | tee packer.log
   post_build:
     commands:
-      - test -f ${OS}_manifest.json || exit 1
-      - cat ${OS}_manifest.json
-      - AMI_ID = $(jq -r '.builds[0].artifact_id | split (":")[1]' ./${OS}_manifest.json)
-      - aws ssm put-parameter --name "/ami/${OS}/id" --value $AMI_ID --type String --overwrite
+      - ls
+      #- test -f "${OS}_manifest.json" || exit 1
+      - cat "${OS}_manifest.json"
+      #- AMI_ID = cat "${OS}_manifest.json" | jq '.builds[0].artifact_id' | tr -d '"' | awk 'match($0, /ami-.*/) { print substr($0, RSTART, RLENGTH) }'
+      #- aws ssm put-parameter --name "/ami/${OS}/id" --value $AMI_ID --type String --overwrite
       - echo "Build completed on $(date)"v

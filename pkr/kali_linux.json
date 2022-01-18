@@ -34,7 +34,7 @@
     "post-processors": [
         {
             "type": "manifest",
-            "output": "kali_manifest.json",
+            "output": "kali_linux_manifest.json",
             "strip_path": true
         }
     ]

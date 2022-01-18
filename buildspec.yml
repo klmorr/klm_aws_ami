@@ -22,7 +22,7 @@ phases:
   post_build:
     commands:
       - ls
-      #- test -f "${OS}_manifest.json" || exit 1
+      - test -f ${OS}_manifest.json || exit 1
       - AMI_ID=$(cat "${OS}_manifest.json" | jq -r .builds[0].artifact_id |  cut -d':' -f2)
       - echo "${AMI_ID}"
       #- cat "${OS}_manifest.json"

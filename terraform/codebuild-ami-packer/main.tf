@@ -117,7 +117,7 @@ POLICY
 resource "aws_codebuild_project" "main" {
   name          = "${var.prefix}-${var.project_name}"
   description   = var.project_name
-  build_timeout = "5"
+  build_timeout = var.build_timeout
   service_role  = aws_iam_role.main.arn
 
   artifacts {

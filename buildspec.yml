@@ -18,6 +18,6 @@ phases:
       - ./packer build -color=false -var-file="./packer/vars/${OS}_vars.json" ./packer/${OS}.json | tee packer.log
   post_build:
     commands:
-      - test -f kali_manifest.json || exit 1
+      - test -f ${OS}_manifest.json || exit 1
       - cat kali_manifest.json
       - echo "Build completed on $(date)"

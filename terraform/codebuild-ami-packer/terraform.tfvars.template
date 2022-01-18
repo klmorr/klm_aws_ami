@@ -1,0 +1,9 @@
+aws_profile     = ""
+aws_region      = ""
+build_timeout   = 30
+github_branch   = "main"
+github_location = ""
+prefix          = ""
+project_name    = ""
+s3_bucket_acl   = "private"
+tags            = ""

@@ -57,9 +57,9 @@ variable "github_branch" {
 }
 
 variable "build_timeout" {
-  type = number
+  type        = number
   description = "Time in minutes forAWS CodeBuild to wait until timing out any related build that does not get marked as completed"
-  default = 30
+  default     = 30
 }
 
 variable "tags" {

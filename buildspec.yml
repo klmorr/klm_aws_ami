@@ -19,5 +19,5 @@ phases:
   post_build:
     commands:
       - test -f ${OS}_manifest.json || exit 1
-      - cat kali_manifest.json
+      - cat ${OS}_manifest.json
       - echo "Build completed on $(date)"

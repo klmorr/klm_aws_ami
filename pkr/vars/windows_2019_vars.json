@@ -1,5 +1,5 @@
 {
-    "region": "us-east-1",
+    "region": "{{env `AWS_DEFAULT_REGION`}}",
     "ami_filter_name": "*Windows_Server-2019-English-Full-Base-*",
     "ami_instance_type": "t3.medium",
     "ami_iam_instance_profile": "ec2_ssm_role",

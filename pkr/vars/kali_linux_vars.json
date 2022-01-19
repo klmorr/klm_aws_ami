@@ -1,5 +1,5 @@
 {
-    "region": "us-east-1",
+    "region": "{{env `AWS_DEFAULT_REGION`}}",
     "instance_type": "t2.small",
     "source_ami": "ami-0e58e6da772372235",
     "ami_owner": "aws-marketplace",

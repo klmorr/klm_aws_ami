@@ -1,7 +1,7 @@
 {
     "builders": [
         {
-            "region": "{{user `aws_region`}}",
+            "region": "{{user `region`}}",
             "ami_name": "amazon2-{{isotime \"02Jan2006\"}}",
             "type": "amazon-ebs",
             "instance_type": "t2.micro",

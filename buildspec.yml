@@ -21,7 +21,6 @@ phases:
       - ./packer build -color=false -var-file="./pkr/vars/${OS}_vars.json" ./pkr/${OS}.json | tee packer.log
   post_build:
     commands:
-      - ls
       - test -f ${OS}_manifest.json || exit 1
       - AMI_ID=$(cat "${OS}_manifest.json" | jq -r .builds[0].artifact_id |  cut -d':' -f2)
       - aws ssm put-parameter --name "/ami/${OS}/id" --value $AMI_ID --type String --overwrite

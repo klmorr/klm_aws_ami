@@ -14,7 +14,7 @@
                 "most_recent": true,
                 "owners": "amazon"
             },
-            "user_data_file": "./scripts/Set-UserData.ps1",
+            "user_data_file": "./scripts/windows/Set-UserData.ps1",
             "communicator": "winrm",
             "winrm_username": "Administrator",
             "winrm_port": 5986,
@@ -31,11 +31,7 @@
     "provisioners": [
         {
             "type": "powershell",
-            "inline": [
-                "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SendWindowsIsReady.ps1 -Schedule",
-                "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\InitializeInstance.ps1 -Schedule",
-                "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SysprepInstance.ps1 -NoShutdown"
-            ]
+            "script": "./scripts/windows/Invoke-Ec2Sysprep.ps1"
         }
     ],
     "post-processors": [

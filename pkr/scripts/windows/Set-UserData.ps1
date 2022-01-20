@@ -75,4 +75,7 @@ Write-Host "Restarting WinRM Service..."
 Write-Host "Enabling remote execution of PowerShell scripts"
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 
+Write-Host "Installing Chocolatey"
+iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+
 </powershell>

@@ -1,6 +1,6 @@
 {
     "region": "{{env `AWS_DEFAULT_REGION`}}",
-    "ami_filter_name": "amzn-ami*-ebs",
+    "ami_filter_name": "*amzn2-ami-hvm-*",
     "instance_type": "t2.small",
     "ami_iam_instance_profile": "ec2_ssm_role",
     "ami_owner": "amazon",

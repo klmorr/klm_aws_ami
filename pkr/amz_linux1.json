@@ -1,0 +1,44 @@
+{
+    "builders": [
+        {
+            "region": "{{user `aws_region`}}",
+            "ami_name": "amazon2-{{isotime \"02Jan2006\"}}",
+            "instance_type": "{{user `instance_type`}}",
+            "ssh_username": "{{user `ssh_username`}}",
+            "ami_description": "{{user `description`}}",
+            "source_ami_filter": {
+                "filters": {
+                    "virtualization-type": "hvm",
+                    "architecture": "x86_64",
+                    "name": "{{user `ami_filter_name`}}",
+                    "root-device-type": "ebs"
+                },
+                "owners": "{{user `ami_owners`}}",
+                "most_recent": true
+            },
+            "type": "amazon-ebs",
+            "tags": {
+                "Name": "amz_linux2-{{isotime \"02Jan2006\"}}",
+                "description": "{{user `description`}}",
+                "builder": "{{user `builder`}}"
+            }
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sudo yum update -y",
+                "sudo yum install python3 unzip ansible python-pip -y",
+                "sudo pip install --upgrade pip"
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "manifest",
+            "output": "amz_linux2_manifest.json",
+            "strip_path": true
+        }
+    ]
+}

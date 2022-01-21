@@ -16,11 +16,11 @@ phases:
       - ./packer validate -var-file="./vars/${OS}_vars.json" ./${OS}.json
   build:
     commands:
-      - echo "Executing packer build"
+      - echo "Executing packer ${OS} build"
       - ./packer build -color=false -var-file="./vars/${OS}_vars.json" ./${OS}.json | tee packer.log
   post_build:
     commands:
       - test -f ${OS}_manifest.json || exit 1
       - AMI_ID=$(cat "${OS}_manifest.json" | jq -r .builds[0].artifact_id |  cut -d':' -f2)
       - aws ssm put-parameter --name "/ami/${OS}/id" --value $AMI_ID --type String --overwrite
-      - echo "Build completed on $(date)"v
+      - echo "${OS} build completed on $(date)"v

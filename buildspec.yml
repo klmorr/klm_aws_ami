@@ -13,6 +13,7 @@ phases:
       - curl -qL -o jq https://stedolan.github.io/jq/download/linux64/jq && chmod +x ./jq
       - echo "Executing packer template validation"
       - cd ./pkr
+      - ls
       - ./packer validate -var-file="./vars/${OS}_vars.json" ./${OS}.json
   build:
     commands:

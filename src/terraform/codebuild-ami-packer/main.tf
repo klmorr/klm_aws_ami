@@ -134,7 +134,7 @@ resource "aws_codebuild_project" "main" {
     environment_variable {
       name  = "OS"
       type  = "PLAINTEXT"
-      value = "kali_linux"
+      value = "amazon_linux_2"
     }
   }
 

@@ -161,3 +161,21 @@ terraform apply
 
 terraform apply -auto-approve
 ```
+
+#### Running the Codebuild project
+
+1. [Log into the AWS Management Console](https://console.aws.amazon.com)
+
+2. Navigate to CodeBuild
+
+3. Click the CodeBuild project
+
+4. Click **Start Build**
+
+By default this will build the amazon linux 2 ami. To build another available OS, select **Start Build With Overrides**, type the value in the Environment Varibles section for OS. The value will need to match the base name of the packer template. Example to build **windows_2016.json**, use **windows_2016**
+
+Available OS builds
+
+- amazon_linux_2
+- windows_2016
+- windows_2016

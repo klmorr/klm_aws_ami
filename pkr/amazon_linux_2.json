@@ -1,24 +1,28 @@
 {
     "builders": [
         {
-            "region": "{{user `aws_region`}}",
-            "ami_name": "amazon2-{{isotime \"02Jan2006\"}}",
+            "ami_description": "{{user `prefix`}}-{{user `os`}}-latest",
+            "ami_name": "{{user `prefix`}}-{{user `os`}}",
+            "force_deregister": true,
             "instance_type": "{{user `instance_type`}}",
+            "region": "{{user `region`}}",
             "ssh_username": "{{user `ssh_username`}}",
-            "ami_description": "{{user `description`}}",
             "source_ami_filter": {
                 "filters": {
                     "virtualization-type": "hvm",
                     "architecture": "x86_64",
-                    "name": "{{user `ami_filter_name`}}",
+                    "name": "{{user `source_ami`}}",
+                    "block-device-mapping.volume-type": "gp2",
                     "root-device-type": "ebs"
                 },
-                "owners": "{{user `ami_owners`}}",
+                "owners": [
+                    "{{user `owners`}}"
+                ],
                 "most_recent": true
             },
             "type": "amazon-ebs",
             "tags": {
-                "Name": "amz_linux2-{{isotime \"02Jan2006\"}}",
+                "Name": "{{user `prefix`}}-{{user `os`}}-{{isotime \"02Jan2006\"}}",
                 "description": "{{user `description`}}",
                 "builder": "{{user `builder`}}"
             }
@@ -27,17 +31,13 @@
     "provisioners": [
         {
             "type": "shell",
-            "inline": [
-                "sudo yum update -y",
-                "sudo yum install python3 unzip ansible python-pip -y",
-                "sudo pip install --upgrade pip"
-            ]
+            "script": "./scripts/{{user `os`}}/provisioners.sh"
         }
     ],
     "post-processors": [
         {
             "type": "manifest",
-            "output": "amz_linux2_manifest.json",
+            "output": "{{user `os`}}_manifest.json",
             "strip_path": true
         }
     ]

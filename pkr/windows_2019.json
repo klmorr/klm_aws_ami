@@ -1,43 +1,44 @@
 {
     "builders": [
         {
-            "ami_name": "wn2016-{{isotime \"02Jan2006\"}}",
-            "region": "{{user `region`}}",
-            "instance_type": "t3.small",
+            "ami_description": "{{user `prefix`}}-{{user `os`}}-latest",
+            "ami_name": "{{user `prefix`}}-{{user `os`}}",
+            "communicator": "winrm",
             "force_deregister": true,
-            "type": "amazon-ebs",
+            "instance_type": "{{user `instance_type`}}",
+            "region": "{{user `region`}}",
             "source_ami_filter": {
                 "filters": {
                     "virtualization-type": "hvm",
-                    "name": "{{user `ami_filter_name`}}"
+                    "name": "{{user `filter_name`}}"
                 },
                 "most_recent": true,
-                "owners": "amazon"
+                "owners": "{{user `owners`}}"
             },
-            "user_data_file": "./scripts/windows/Set-UserData.ps1",
-            "communicator": "winrm",
-            "winrm_username": "Administrator",
+            "winrm_insecure": true,
             "winrm_port": 5986,
             "winrm_timeout": "30m",
             "winrm_use_ssl": true,
-            "winrm_insecure": true,
+            "winrm_username": "Administrator",
             "tags": {
-                "Name": "wn2016-{{timestamp}}",
-                "description": "{{user `description`}}",
+                "Name": "{{user `prefix`}}-{{user `os`}}-{{isotime \"02Jan2006\"}}",
+                "description": "{{user `prefix`}}-{{user `os`}}-ami",
                 "builder": "{{user `builder`}}"
-            }
+            },
+            "type": "amazon-ebs",
+            "user_data_file": "./scripts/{{user `os`}}/userdata.txt"
         }
     ],
     "provisioners": [
         {
             "type": "powershell",
-            "script": "./scripts/windows/Invoke-Ec2Sysprep.ps1"
+            "script": "./scripts/{{user `os`}}/Invoke-Provisioners.ps1"
         }
     ],
     "post-processors": [
         {
             "type": "manifest",
-            "output": "windows_2019_manifest.json",
+            "output": "{{user `os`}}_manifest.json",
             "strip_path": true
         }
     ]

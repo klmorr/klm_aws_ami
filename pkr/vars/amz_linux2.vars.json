@@ -1,9 +1,0 @@
-{
-    "region": "{{env `AWS_DEFAULT_REGION`}}",
-    "name": "amzn-ami-hvm-????.??.?.x86_64-gp2",
-    "instance_type": "t2.small",
-    "ami_iam_instance_profile": "ec2_ssm_role",
-    "ami_owner": "amazon",
-    "description": "amazon linux 2 latest",
-    "builder": "packer"
-}

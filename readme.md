@@ -16,7 +16,7 @@ Codebuild project for creating ami images using packer
 | Name | Description |
 |------|-------------|
 | [amazon_linux_2](src/pkr/amazon_linux_2.json) | Packer template to create an Amazon Linux 2 ami |
-| [windows_2016](src/pkr/windows_2016,json) | Packer template to create a Windows 2016 base ami |
+| [windows_2016](src/pkr/windows_2016.json) | Packer template to create a Windows 2016 base ami |
 | [windows_2019](src/pkr/windows_2019.json) | Packer template to create a Windows 2019 base ami |
 
 #### Getting started

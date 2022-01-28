@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    OS: "kali_linux"
+    OS: "amazon_linux_2"
   exported-variables:
     - OS
     - CODEBUILD_BUILD_ID
@@ -12,13 +12,12 @@ phases:
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/1.7.8/packer_1.7.8_linux_amd64.zip && unzip packer.zip -d ./pkr
       - curl -qL -o jq https://stedolan.github.io/jq/download/linux64/jq && chmod +x ./jq
       - echo "Executing packer template validation"
-      - cd ./pkr
-      - ls
-      - ./packer validate -var-file="./vars/${OS}_vars.json" ./${OS}.json
+      - cd ./src/pkr
+      - ./packer validate -var-file="./vars/${OS}.json" ./${OS}.json
   build:
     commands:
       - echo "Executing packer ${OS} build"
-      - ./packer build -color=false -var-file="./vars/${OS}_vars.json" ./${OS}.json | tee packer.log
+      - ./packer build -color=false -var-file="./vars/${OS}.json" ./${OS}.json | tee packer.log
   post_build:
     commands:
       - test -f ${OS}_manifest.json || exit 1

@@ -8,17 +8,16 @@ Codebuild project for creating ami images using packer
 
 | Name | Description |
 |------|-------------|
-| [codebuild-ami-packer](/terraform/codebuild-ami-packer/readme.md) | Terraform template for creating the codebuild project |
-| [codebuild-token-github](/terraform/codebuild-token-github/readme.md) | Adds Github personal access token to codebuild (Only run if token has not been previously added) |
+| [codebuild-ami-packer](src/terraform/codebuild-ami-packer/readme.md) | Terraform template for creating a codebuild project to build amis |
+| [codebuild-token-github](src/terraform/codebuild-token-github/readme.md) | Adds Github personal access token to codebuild (Only run if token has not been previously added) |
 
 ### Packer Templates
 
 | Name | Description |
 |------|-------------|
-| [amazon_linux2](pkr/amazon_linux2.json) | Packer template to create an Amazon Linux 2 ami |
-| [kali_linux](pkr/kali_linux.json) | Packer template to create a Kali Linux ami, must subscribe to ami in AWS Marketplace |
-| [windows_2016](pkr/vars/windows_2016_vars.json) | Packer template to create a Windows 2016 base ami |
-| [windows_2019](pkr/windows_2019.json) | Packer template to create a Windows 2019 base ami |
+| [amazon_linux2](src/pkr/amazon_linux2.json) | Packer template to create an Amazon Linux 2 ami |
+| [windows_2016](src/pkr/vars/windows_2016_vars.json) | Packer template to create a Windows 2016 base ami |
+| [windows_2019](src/pkr/windows_2019.json) | Packer template to create a Windows 2019 base ami |
 
 #### Getting started
 

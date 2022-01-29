@@ -4,6 +4,11 @@
 
 Codebuild project for creating ami images using packer
 
+Useful tools
+
+- [terraform-docs](https://github.com/terraform-docs/terraform-docs)
+- [tfsec](https://github.com/aquasecurity/tfsec)
+
 ### Terraform Project Templates
 
 | Name | Description |

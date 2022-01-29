@@ -3,6 +3,8 @@ function Install-Chocolatey
     [CmdletBinding()]
     param()
 
+    Write-Verbose "Installing Chocolatey"
+
     Set-ExecutionPolicy Bypass -Scope Process -Force
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
@@ -24,6 +26,8 @@ function Install-ChocolateyPackage
         $Name
     )
 
+    Write-Verbose "Installing $($Name) using Chocolatey"
+
     $Command = "choco install $($Name) -y"
 
     Invoke-Expression -Command $Command
@@ -33,6 +37,8 @@ function Invoke-PostBuild
 {
     [CmdletBinding()]
     param()
+
+    Write-Verbose "Running AWS EC sysprep"
 
     if ( Test-Path -Path  "C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\SendWindowsIsReady.ps1" )
     {
@@ -54,13 +60,9 @@ function Invoke-PostBuild
     }
 }
 
-Write-Output "Installing chocolatey"
 Install-Chocolatey -Verbose
 
-Write-Output "Installing aws-cli-session-manager"
 Install-ChocolateyPackage -Name "awscli-session-manager" -Verbose
 
-Write-Output "Executing sysprep"
 Invoke-PostBuild
-
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Codebuild project for creating ami images using packer
+[CodeBuild](https://aws.amazon.com/codebuild/) project for creating ami images using packer
 
 Requirements
 

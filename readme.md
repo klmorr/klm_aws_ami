@@ -6,8 +6,8 @@
 
 Requirements
 
-- [terraform](https://www.terraform.io/)
-- [packer](https://www.packer.io/)
+- [Terraform](https://www.terraform.io/)
+- [Packer](https://www.packer.io/)
 
 Useful tools
 

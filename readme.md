@@ -11,8 +11,10 @@ Requirements
 
 Useful tools
 
-- [terraform-docs](https://github.com/terraform-docs/terraform-docs)
-- [tfsec](https://github.com/aquasecurity/tfsec)
+| Name | Description |
+|------|-------------|
+| [terraform-docs](https://github.com/terraform-docs/terraform-docs) | A utility to generate documentation from Terraform modules in various output formats |
+| [tfsec](https://github.com/aquasecurity/tfsec) | tfsec uses static analysis of your terraform templates to spot potential security issues |
 
 ### Terraform Project Templates
 

@@ -4,6 +4,13 @@ resource "aws_s3_bucket" "main" {
   force_destroy = true
 }
 
+resource "aws_s3_bucket_public_access_block" "main" {
+  bucket              = aws_s3_bucket.main.id
+  block_public_acls   = true
+  block_public_policy = true
+  ignore_public_acls  = true
+}
+
 resource "aws_iam_role" "main" {
   name = "${var.prefix}-${var.project_name}"
 

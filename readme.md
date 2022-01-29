@@ -51,21 +51,13 @@ git clone https://github.com/klmorr/klm_aws_ami.git
 cd ./terraform/codebuild-token-github
 ```
 
-2. Rename terraform.tfvars.template to terraform.tfvars
+2. Create a terraform.tfvars file from the terraform.tfvars.template. If not using a tfvars file, you will be prompted to input values. If using terraform-docs,
 
-Nix
+run the following to generate a tfvars file, then add desired values.
 
 ```bash
-mv terraform.tfvars.template terraform.tfvars
+terraform-docs tfvars hcl ./ > tfvars.example
 ```
-
-Windows
-
-```powershell
-Rename-Item -Path .\terraform.tfvars.template -NewName terraform.tfvars
-```
-
-3. Add values for variables in the terraform.tfvars file
 
 example:
 
@@ -75,13 +67,13 @@ aws_region   = "us-east-1"
 github_token = "***********"
 ```
 
-4. Initiate the terraform project
+3. Initiate the terraform project
 
 ```bash
 terraform init
 ```
 
-5. (Optional) Validate the terraform configuration
+4. (Optional) Validate the terraform configuration
    
 ```bash
 terraform valildate
@@ -111,18 +103,20 @@ terraform apply -auto-approve
 cd ./terraform/codebuild-ami-packer
 ```
 
-2. Rename terraform.tfvars.template to terraform.tfvars
+2. Create a terraform.tfvars file from the terraform.tfvars.template. If not using a tfvars file, you will be prompted to input values. If using terraform-docs,
 
-Nix
+run the following to generate a tfvars file, then add desired values.
 
 ```bash
-mv terraform.tfvars.template terraform.tfvars
+terraform-docs tfvars hcl ./ > tfvars.example
 ```
 
-Windows
+example:
 
-```powershell
-Rename-Item -Path .\terraform.tfvars.template -NewName terraform.tfvars
+```bash
+aws_profile  = "my-profile"
+aws_region   = "us-east-1"
+github_token = "***********"
 ```
 
 3. Add values for variables in the terraform.tfvars file

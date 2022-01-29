@@ -51,9 +51,7 @@ git clone https://github.com/klmorr/klm_aws_ami.git
 cd ./terraform/codebuild-token-github
 ```
 
-2. Create a terraform.tfvars file from the terraform.tfvars.template. If not using a tfvars file, you will be prompted to input values. If using terraform-docs,
-
-run the following to generate a tfvars file, then add desired values.
+2. Create a terraform.tfvars file from the terraform.tfvars.template. If not using a tfvars file, you will be prompted to input values. If using terraform-docs,run the following to generate a tfvars file, then add desired values.
 
 ```bash
 terraform-docs tfvars hcl ./ > tfvars.example
@@ -103,9 +101,7 @@ terraform apply -auto-approve
 cd ./terraform/codebuild-ami-packer
 ```
 
-2. Create a terraform.tfvars file from the terraform.tfvars.template. If not using a tfvars file, you will be prompted to input values. If using terraform-docs,
-
-run the following to generate a tfvars file, then add desired values.
+2. Create a terraform.tfvars file from the terraform.tfvars.template. If not using a tfvars file, you will be prompted to input values. If using terraform-docs, run the following to generate a tfvars file, then add desired values.
 
 ```bash
 terraform-docs tfvars hcl ./ > tfvars.example

@@ -4,6 +4,11 @@
 
 Codebuild project for creating ami images using packer
 
+Requirements
+
+- [terraform](https://www.terraform.io/)
+- [packer](https://www.packer.io/)
+
 Useful tools
 
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)

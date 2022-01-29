@@ -55,11 +55,12 @@ function Invoke-PostBuild
 }
 
 Write-Output "Installing chocolatey"
-
 Install-Chocolatey -Verbose
 
+Write-Output "Installing aws-cli-session-manager"
 Install-ChocolateyPackage -Name "awscli-session-manager" -Verbose
 
+Write-Output "Executing sysprep"
 Invoke-PostBuild
 
 

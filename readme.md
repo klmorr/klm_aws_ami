@@ -165,6 +165,8 @@ terraform apply -auto-approve
 
 #### Running the Codebuild project
 
+**Console**
+
 1. [Log into the AWS Management Console](https://console.aws.amazon.com)
 
 2. Navigate to CodeBuild
@@ -180,3 +182,13 @@ Available OS builds
 - amazon_linux_2
 - windows_2016
 - windows_2016
+
+**AWScli**
+
+```bash
+# default build (amazon_linux_2)
+aws codebuild start-build --project-name <project-name> --profile <credential_profile>
+
+# specify os
+aws codebuild start-build --project-name <project-name> --environment-variables-override <os_name>
+```

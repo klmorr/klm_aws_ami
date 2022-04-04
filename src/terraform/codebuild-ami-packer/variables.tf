@@ -1,17 +1,12 @@
-variable "prefix" {
-  type        = string
-  description = "prefix for all resource names"
-}
-
 variable "aws_profile" {
   type        = string
-  description = "Local aws credential profile"
+  description = "AWS credential profile, currently used for local testing"
   sensitive   = true
 }
 
 variable "aws_region" {
   type        = string
-  description = "AWS account region to create the SSM parameter in"
+  description = "AWS account region, currently used for local testing"
 
   validation {
     condition = (contains([
@@ -22,6 +17,16 @@ variable "aws_region" {
     ], var.aws_region))
     error_message = "Value must be in the allowed regions list."
   }
+}
+
+variable "build_timeout" {
+  type        = number
+  description = "Time in minutes forAWS CodeBuild to wait until timing out any related build that does not get marked as completed"
+  default     = 30
+}
+variable "prefix" {
+  type        = string
+  description = "prefix for all resource names"
 }
 
 variable "s3_bucket_acl" {
@@ -54,12 +59,6 @@ variable "github_branch" {
   type        = string
   description = "Github branch for source code"
   default     = "main"
-}
-
-variable "build_timeout" {
-  type        = number
-  description = "Time in minutes forAWS CodeBuild to wait until timing out any related build that does not get marked as completed"
-  default     = 30
 }
 
 variable "tags" {

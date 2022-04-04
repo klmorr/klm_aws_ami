@@ -7,5 +7,6 @@
     "prefix": "kmo",
     "region": "{{env `AWS_DEFAULT_REGION`}}",
     "ssh_username": "ec2-user",
-    "source_ami": "*amzn2-ami-hvm-*"
+    "source_ami": "*amzn2-ami-hvm-*",
+    "type": "base_amz2_ami"
 }

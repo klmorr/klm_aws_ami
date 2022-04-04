@@ -5,5 +5,6 @@
     "os": "windows_2019",
     "owners": "amazon",
     "prefix": "kmo",
-    "region": "{{env `AWS_DEFAULT_REGION`}}"
+    "region": "{{env `AWS_DEFAULT_REGION`}}",
+    "type": "base_win19_ami"
 }

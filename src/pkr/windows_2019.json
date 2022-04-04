@@ -23,7 +23,8 @@
             "tags": {
                 "Name": "{{user `prefix`}}-{{user `os`}}-{{isotime \"02Jan2006\"}}",
                 "description": "{{user `prefix`}}-{{user `os`}}-ami",
-                "builder": "{{user `builder`}}"
+                "builder": "{{user `builder`}}",
+                "type": "{{user `type`}}"
             },
             "type": "amazon-ebs",
             "user_data_file": "./scripts/{{user `os`}}/userdata.txt"

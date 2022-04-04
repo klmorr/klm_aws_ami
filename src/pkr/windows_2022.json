@@ -27,13 +27,13 @@
                 "type": "{{user `type`}}"
             },
             "type": "amazon-ebs",
-            "user_data_file": "./scripts/{{user `os`}}/userdata.txt"
+            "user_data_file": "./scripts/windows/common/userdata.txt"
         }
     ],
     "provisioners": [
         {
             "type": "powershell",
-            "script": "./scripts/{{user `os`}}/Invoke-Provisioners.ps1"
+            "script": "./scripts/windows/common/Invoke-Provisioners.ps1"
         }
     ],
     "post-processors": [

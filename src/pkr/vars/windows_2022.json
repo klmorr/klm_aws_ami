@@ -1,0 +1,10 @@
+{
+    "builder": "packer",
+    "filter_name": "*Windows_Server-2022-English-Full-Base-*",
+    "instance_type": "t2.medium",
+    "os": "windows_2022",
+    "owners": "amazon",
+    "prefix": "kmo",
+    "region": "{{env `AWS_DEFAULT_REGION`}}",
+    "type": "base_win19_ami"
+}

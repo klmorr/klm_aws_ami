@@ -26,7 +26,7 @@ variable "region" {
 
 variable "source_ami" {
   type    = string
-  default = "RHEL-8*HVM-*-x86_64-*-Hourly2-GP2"
+  default = "RHEL-8*-x86_64-*"
 }
 
 variable "ssh_username" {

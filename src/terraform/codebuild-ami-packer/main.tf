@@ -1,27 +1,5 @@
-resource "aws_s3_bucket" "main" {
-  bucket        = "${var.prefix}-${var.project_name}"
-  acl           = var.s3_bucket_acl
-  force_destroy = true
-
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
-}
-
-resource "aws_s3_bucket_public_access_block" "main" {
-  bucket                  = aws_s3_bucket.main.id
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
-
 resource "aws_iam_role" "main" {
-  name = "${var.prefix}-${var.project_name}"
+  name = "${var.prefix}-ami-builder"
 
   assume_role_policy = jsonencode(
     {
@@ -39,7 +17,7 @@ resource "aws_iam_role" "main" {
 }
 
 resource "aws_iam_role_policy" "main" {
-  name = "${var.prefix}-${var.project_name}"
+  name = "${aws_iam_role.main.name}-policy"
   role = aws_iam_role.main.name
   policy = jsonencode({
     "Version" = "2012-10-17",
@@ -109,16 +87,6 @@ resource "aws_iam_role_policy" "main" {
       {
         "Effect" = "Allow",
         "Action" = [
-          "s3:*"
-        ],
-        "Resource" : [
-          "${aws_s3_bucket.main.arn}",
-          "${aws_s3_bucket.main.arn}/*"
-        ]
-      },
-      {
-        "Effect" = "Allow",
-        "Action" = [
           "iam:PassRole"
         ],
         "Resource" = "*"
@@ -128,8 +96,8 @@ resource "aws_iam_role_policy" "main" {
 }
 
 resource "aws_codebuild_project" "main" {
-  name          = "${var.prefix}-${var.project_name}"
-  description   = var.project_name
+  name          = "${var.prefix}-ami-builder"
+  description   = "Ami build pipeline"
   build_timeout = var.build_timeout
   service_role  = aws_iam_role.main.arn
 
@@ -150,14 +118,14 @@ resource "aws_codebuild_project" "main" {
     environment_variable {
       name  = "OS"
       type  = "PLAINTEXT"
-      value = "amazon_linux_2"
+      value = "amazon_2"
     }
   }
 
   logs_config {
     cloudwatch_logs {
-      group_name  = "${var.project_name}-log-group"
-      stream_name = "${var.project_name}-log-stream"
+      group_name  = "${var.prefix}-ami-log-group"
+      stream_name = "${var.prefix}-log-stream"
     }
   }
 
@@ -172,6 +140,18 @@ resource "aws_codebuild_project" "main" {
   }
 
   source_version = var.github_branch
+}
 
-  tags = var.tags
+resource "aws_codebuild_source_credential" "main" {
+  auth_type   = "PERSONAL_ACCESS_TOKEN"
+  server_type = "GITHUB"
+  token       = var.github_token
+}
+
+resource "aws_ssm_parameter" "main" {
+  name        = "/github/token"
+  description = "Github personal access token"
+  overwrite   = true
+  type        = "SecureString"
+  value       = var.github_token
 }

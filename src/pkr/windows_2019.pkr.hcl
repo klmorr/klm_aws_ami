@@ -1,5 +1,5 @@
 locals {
-  Name = "win_2019"
+  Name = "windows_2019"
   build_date = formatdate("MM-DD-YYYY", timestamp())
   ami_description = "base windows 2019 ami"
   common_tags = {

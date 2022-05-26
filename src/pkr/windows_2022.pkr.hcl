@@ -16,7 +16,7 @@ variable "filter_name" {
 
 variable "instance_type" {
   type    = string
-  default = "t2.medium"
+  default = "t3.medium"
 }
 
 variable "owners" {

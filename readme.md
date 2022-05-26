@@ -10,6 +10,8 @@ Release notes
 
 ## Description
 
+Creates custom amis using packer/codebuild. Writes the resulting ami id to the ssm parameter store
+
 [CodeBuild](https://aws.amazon.com/codebuild/) project for creating ami images using packer
 
 Requirements

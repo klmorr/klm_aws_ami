@@ -67,8 +67,6 @@ function Invoke-Ec2Sysprep
 
 Install-AWSPowershell -Verbose
 
-Install-WindowsFeature -Name Telnet-Client
-
 $chocoPackage = @(
     "python",
     "awscli",

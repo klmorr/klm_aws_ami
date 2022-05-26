@@ -67,7 +67,7 @@ build {
   sources = ["source.amazon-ebs.main"]
 
   provisioner "shell" {
-    script = "./scripts/linux/provisioners.sh"
+    script = "./scripts/linux/provisioner.sh"
   }
 
   post-processor "manifest" {

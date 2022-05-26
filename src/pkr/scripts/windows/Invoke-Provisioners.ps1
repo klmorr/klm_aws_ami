@@ -3,8 +3,6 @@ function Install-Chocolatey
     [CmdletBinding()]
     param()
 
-    Write-Verbose "Installing Chocolatey"
-
     Set-ExecutionPolicy Bypass -Scope Process -Force
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
@@ -26,19 +24,26 @@ function Install-ChocolateyPackage
         $Name
     )
 
-    Write-Verbose "Installing $($Name) using Chocolatey"
-
     $Command = "choco install $($Name) -y"
 
     Invoke-Expression -Command $Command
 }
 
-function Invoke-PostBuild
+function Install-AWSPowershell
 {
     [CmdletBinding()]
     param()
 
-    Write-Verbose "Running AWS EC sysprep"
+    if ( -Not ( Get-Module -Name AWSPowershell -ListAvailable ))
+    {
+        Install-Module -Name AWSPowershell -Confirm:$False -Force
+    }
+}
+
+function Invoke-Ec2Sysprep
+{
+    [CmdletBinding()]
+    param()
 
     if ( Test-Path -Path  "C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\SendWindowsIsReady.ps1" )
     {
@@ -60,9 +65,23 @@ function Invoke-PostBuild
     }
 }
 
+Install-AWSPowershell -Verbose
+
+Install-WindowsFeature -Name Telnet-Client
+
+$chocoPackage = @(
+    "python",
+    "awscli",
+    "googlechrome"
+)
+
+Write-Output "Installing chocolatey"
+
 Install-Chocolatey -Verbose
 
-Install-ChocolateyPackage -Name "awscli-session-manager" -Verbose
+foreach ( $package in $chocoPackage ) 
+{
+    Install-ChocolateyPackage -Name $package -Verbose
+}
 
-Invoke-PostBuild
-
+Invoke-Ec2Sysprep

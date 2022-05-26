@@ -3,7 +3,7 @@
 if [[ $(command -v "yum" ) ]];then
     sudo yum update -y
     sudo amazon-linux-extras enable ansible2
-    sudo yum install python3 unzip ansible jq python-pip -y
+    sudo yum install python3 zip unzip ansible jq python-pip -y
     sudo pip install --upgrade pip
     sudo yum install -y ansible
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"

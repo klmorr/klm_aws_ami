@@ -1,5 +1,0 @@
-bucket          = "klm-tf-state"
-dynamodb_table  = "klm-tf-state"
-encrypt         = true
-key             = "codebuild_packer/terraform.tfstate"
-region          = "us-east-1"

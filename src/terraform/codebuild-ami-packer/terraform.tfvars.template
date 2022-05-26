@@ -1,9 +1,5 @@
-aws_profile     = ""
-aws_region      = ""
 build_timeout   = 30
 github_branch   = "main"
-github_location = ""
+github_location = "https://github.com/klmorr/klm_aws_ami.git"
+github_token    = ""
 prefix          = ""
-project_name    = ""
-s3_bucket_acl   = "private"
-tags            = ""

@@ -39,8 +39,8 @@ Useful tools
 | [amazon_2](src/pkr/amazon_2.pkr.hcl) | Packer template to create an Amazon Linux 2 ami |
 | [ubuntu_22](src/pkr/ubuntu_22.pkr.hcl) | Packer template to create Ubuntu 22.04 ami |
 | [rhel_8](src/pkr/rhel_8.pkr.hcl) | Packer template to create RedHat 8 ami |
-| [windows_2016](src/pkr/windows_2019.pkr.hcl) | Packer template to create a Windows 2019 base ami |
-| [windows_2019](src/pkr/windows_2022.pkr.hcl) | Packer template to create a Windows 2022 base ami |
+| [windows_2019](src/pkr/windows_2019.pkr.hcl) | Packer template to create a Windows 2019 base ami |
+| [windows_2022](src/pkr/windows_2022.pkr.hcl) | Packer template to create a Windows 2022 base ami |
 
 #### Getting started
 

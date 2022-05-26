@@ -17,6 +17,7 @@ phases:
   build:
     commands:
       - echo "Executing packer ${OS} build"
+      - ./packer init "${OS}.pkr.hcl"
       - ./packer build -color=false ${OS}.pkr.hcl | tee packer.log
   post_build:
     commands:

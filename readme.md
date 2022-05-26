@@ -205,8 +205,10 @@ Windows
 Linux
 
 - ansible
+- aws cli
+- aws ssm agent
+- jq
 - python3
 - pip3
-- zip
 - unzip
-- jq
+- zip

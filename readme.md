@@ -1,4 +1,12 @@
-# codebuild ami creator
+# codebuild-ami-builder
+
+Release notes
+
+- Removed older os versions
+- Update packer templates to use hcl2
+- Added RedHat 8 and Ubuntu 22.04 templates
+- Update buildspec to use new packer templates
+- Consolidated packer scripts
 
 ## Description
 

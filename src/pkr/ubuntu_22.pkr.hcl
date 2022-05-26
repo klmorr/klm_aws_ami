@@ -31,7 +31,7 @@ variable "source_ami" {
 
 variable "ssh_username" {
   type    = string
-  default = "ec2-user"
+  default = "ubuntu"
 }
 
 data "amazon-ami" "main" {

@@ -13,11 +13,11 @@ phases:
       - curl -qL -o jq https://stedolan.github.io/jq/download/linux64/jq && chmod +x ./jq
       - echo "Executing packer template validation"
       - cd ./src/pkr
-      - ./packer validate -var-file="./vars/${OS}.json" ./${OS}.json
+      - ./packer validate ${OS}.pkr.hcl
   build:
     commands:
       - echo "Executing packer ${OS} build"
-      - ./packer build -color=false -var-file="./vars/${OS}.json" ./${OS}.json | tee packer.log
+      - ./packer build -color=false ${OS}.pkr.hcl | tee packer.log
   post_build:
     commands:
       - test -f ${OS}_manifest.json || exit 1

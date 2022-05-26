@@ -9,7 +9,10 @@ if [[ $(command -v "yum" ) ]];then
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install
-    exit $?
+
+    if ! [[ $( sudo systemctl status amazon-ssm-agent ) ]];then
+        sudo dnf install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+    fi
 elif [[ $(command -v "apt") ]];then
     sudo apt update && upgrade && apt dist-upgrade -y
     sudo apt-get install software-properties-common -y
@@ -23,8 +26,11 @@ elif [[ $(command -v "apt") ]];then
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install
-    exit $?
+    if ! [[ $( sudo systemctl snap.amazon-ssm-agent.service) ]];then
+        sudo snap list amazon-ssm-agent
+        sudo snap start amazon-ssm-agent
+    fi
+
 else
     echo "package manager not in script"
-    exit 1
 fi

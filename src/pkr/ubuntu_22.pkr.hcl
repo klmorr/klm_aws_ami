@@ -16,7 +16,7 @@ variable "instance_type" {
 
 variable "owners" {
   type    = list(string)
-  default = ["amazon"]
+  default = ["099720109477"]
 }
 
 variable "region" {
@@ -26,7 +26,7 @@ variable "region" {
 
 variable "source_ami" {
   type    = string
-  default = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
+  default = "ubuntu/images/hvm-ssd/*ubuntu-*-22.04-amd64-server-*"
 }
 
 variable "ssh_username" {
@@ -37,7 +37,6 @@ variable "ssh_username" {
 data "amazon-ami" "main" {
   filters = {
     architecture                       = "x86_64"
-    "block-device-mapping.volume-type" = "gp2"
     name                               = "${var.source_ami}"
     root-device-type                   = "ebs"
     virtualization-type                = "hvm"

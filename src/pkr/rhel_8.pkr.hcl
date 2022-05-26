@@ -36,8 +36,6 @@ variable "ssh_username" {
 
 data "amazon-ami" "main" {
   filters = {
-    architecture                       = "x86_64"
-    "block-device-mapping.volume-type" = "gp2"
     name                               = "${var.source_ami}"
     root-device-type                   = "ebs"
     virtualization-type                = "hvm"

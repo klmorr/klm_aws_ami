@@ -16,7 +16,7 @@ variable "instance_type" {
 
 variable "owners" {
   type    = list(string)
-  default = ["amazon"]
+  default = ["309956199498"]
 }
 
 variable "region" {
@@ -26,7 +26,7 @@ variable "region" {
 
 variable "source_ami" {
   type    = string
-  default = "RHEL-8*-x86_64-*"
+  default = "RHEL-8.5_HVM-*-x86_64-*-Hourly2-GP2"
 }
 
 variable "ssh_username" {

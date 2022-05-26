@@ -11,7 +11,7 @@ locals {
 
 variable "filter_name" {
   type    = string
-  default = "*Windows_Server-2022-English-Full-Base-*"
+  default = "TPM-Windows_Server-2022-English-Full-Base-*"
 }
 
 variable "instance_type" {
@@ -42,6 +42,7 @@ data "amazon-ami" "main" {
 source "amazon-ebs" "main" {
   ami_description  = "${local.ami_description}"
   ami_name         = "${local.Name}_${local.build_date}"
+  encrypt_boot     = true
   communicator     = "winrm"
   force_deregister = true
   instance_type    = "${var.instance_type}"

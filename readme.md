@@ -192,3 +192,21 @@ aws codebuild start-build --project-name <project-name> --profile <credential_pr
 # specify os
 aws codebuild start-build --project-name <project-name> --environment-variables-override <os_name>
 ```
+
+##### Installed packages
+
+Windows
+
+- Chocolatey
+- python 3
+- awscli
+- googlechrome
+
+Linux
+
+- ansible
+- python3
+- pip3
+- zip
+- unzip
+- jq

@@ -11,6 +11,7 @@ if [[ $(command -v "yum" ) ]];then
     sudo ./aws/install
 
     if ! [[ $( sudo systemctl status amazon-ssm-agent ) ]];then
+        echo  "Installing the aws ssm agent..."
         sudo dnf install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
     fi
 elif [[ $(command -v "apt") ]];then
@@ -27,6 +28,7 @@ elif [[ $(command -v "apt") ]];then
     unzip awscliv2.zip
     sudo ./aws/install
     if ! [[ $( sudo systemctl snap.amazon-ssm-agent.service) ]];then
+        echo  "Installing the aws ssm agent..."
         sudo snap list amazon-ssm-agent
         sudo snap start amazon-ssm-agent
     fi

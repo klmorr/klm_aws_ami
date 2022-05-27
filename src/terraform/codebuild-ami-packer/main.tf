@@ -87,6 +87,19 @@ resource "aws_iam_role_policy" "main" {
       {
         "Effect" = "Allow",
         "Action" = [
+          "sns:CreateTopic",
+          "sns:GetTopicAttributes",
+          "sns:List*",
+          "sns:Publish",
+          "sns:SetTopicAttributes",
+          "sns:Subscribe"
+        ],
+        "Resource" = "*",
+        "Effect"   = "Allow"
+      },
+      {
+        "Effect" = "Allow",
+        "Action" = [
           "iam:PassRole"
         ],
         "Resource" = "*"
